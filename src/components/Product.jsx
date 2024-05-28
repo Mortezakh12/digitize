@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BiCheck } from "react-icons/bi";
+import { data } from "../data/data";
 const initialValueTicketCircle = [
   {
     id: 1,
@@ -23,13 +24,17 @@ const Product = () => {
     setIsTickCircleShow(id);
   };
   return (
-    <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4 ">
-      <div className="bg-stone-50 rounded-xl shadow-md p-2">
+    <div className="grid grid-cols-2 gap-x-2 gap-y-8 px-2 sm:gap-x-4 md:gap-x-8 md:grid-cols-3 lg:grid-cols-4 md:gap-y-10 ">
+      {
+        data.map((product)=>{
+            return(
+                // eslint-disable-next-line react/jsx-key
+                <div className="bg-stone-50 rounded-xl shadow-md p-2">
         <div className="mb-3 bg-slate-200 rounded-xl p-2">
           <img
             className=""
-            src=".././../public/img/apple-seri-6.png"
-            alt="apple-whatch-serie-6"
+            src={product.imgUrl}
+            alt={product.title}
           />
         </div>
         {/* product description */}
@@ -59,25 +64,20 @@ const Product = () => {
         </div>
         {/* product title */}
         <div className="text-slate-800 text-xs font-bold mb-2 md:text-base">
-          ساعت هوشمند اپل سری 6
+          {product.title}
         </div>
         <div className="text-orange-600 font-medium text-center text-sm mb-3">
-          12،500،000 تومان
+          {product.price}
         </div>
         <hr />
         <button className="w-full font-bold text-orange-600 py-1 md:text-lg">
           مشاهده و سفارش
         </button>
       </div>
-      <div className="bg-blue-100">2</div>
-      <div className="bg-blue-100">3</div>
-      <div className="bg-blue-100">4</div>
-      <div className="bg-blue-100">5</div>
-      <div className="bg-blue-100">6</div>
-      <div className="bg-blue-100">7</div>
-      <div className="bg-blue-100">8</div>
-      <div className="bg-blue-100">9</div>
-      <div className="bg-blue-100">10</div>
+            )
+        })
+      }
+      
     </div>
   );
 };
